@@ -23,18 +23,17 @@ class Login extends React.Component {
     axiosWithAuth()
       .post("/login", this.state.credentials)
       .then((res) => {
-        console.log("bk: Login.js: login: res: ", res);
         localStorage.setItem("token", res.data.payload);
         this.props.history.push("/protected");
       })
       .catch((err) => {
         if (err.response) {
           console.error(
-            "Login.js: login failed: response from server: ",
+            "login failed",
             err.response.data
           );
         } else {
-          console.error("Login.js: login failed: err: ", err);
+          console.error("login failed: err: ", err);
         }
       });
   };
